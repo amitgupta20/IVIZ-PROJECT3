@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+
+body {
+    font-family: "Montserrat", "sans-serif";
+  }
+
+  .axis path {
+    stroke: black;
+    stroke-width: 2px;
+  }
+
+  .axis line {
+    stroke: black;
+    stroke-width: 1.5px;
+  }
+
+  .axis text {
+    fill: black;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: "Montserrat", Gadget, sans-serif;
+  }
+
+  .tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: #000;
+    color: #fff;
+  }
+
+  .legend {
+    border: 2px solid black;
+  }
+
+  .legend text {
+    fill: black;
+    font-family: "Montserrat", Gadget, sans-serif;
+  }
+
+  #line-graph {
+    background: linear-gradient(to right, #adeb6f 0%, #46cfd9 100%);
+  }
