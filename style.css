@@ -21,22 +21,14 @@ body {
     font-family: "Montserrat", Gadget, sans-serif;
   }
 
-  .tooltip {
+  .tooltip, .tooltip2 {
     position: absolute;
     pointer-events: none;
     background: #000;
     color: #fff;
+    z-index: 10;
   }
 
-  .legend {
-    border: 2px solid black;
-  }
-
-  .legend text {
-    fill: black;
-    font-family: "Montserrat", Gadget, sans-serif;
-  }
-
-  #line-graph {
+  #line-graph, #bar-chart {
     background: linear-gradient(to right, #adeb6f 0%, #46cfd9 100%);
   }

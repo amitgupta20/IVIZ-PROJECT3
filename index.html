@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8" />
+        <!-- Load d3 source scripts -->
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script src="line-chart.js"></script>
+        <script src="stacked-bar-chart.js"></script>
+        <link rel="stylesheet" href="style.css" />
+    </head>
 
-<head>
-  <meta charset="utf-8">
-  <!-- Load d3 source scripts -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="line-chart.js"></script>
-  <script src="stacked-bar-chart.js"></script>
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-  <svg id="line-graph" width="1000" height="650" style="border: 1px solid black"></svg>
-  <svg id="bar-chart" width="1000" height="650" style="border: 1px solid black"></svg>
-  
-</body>
+    <body>
+        <svg
+            id="line-graph"
+            width="1000"
+            height="650"
+            style="border: 1px solid black"
+        ></svg>
+        <svg
+            id="bar-chart"
+            width="1000"
+            height="700"
+            style="border: 1px solid black"
+        ></svg>
+    </body>
 </html>
