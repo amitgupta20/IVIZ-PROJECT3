@@ -4,7 +4,6 @@ function loadData() {
 }
 function lineChart(data) {
     //set canvas margins
-
     let leftMargin = 100,
         topMargin = 70,
         rightMargin = 20,
@@ -12,7 +11,7 @@ function lineChart(data) {
         width = 800,
         height = 600
 
-    // //append title
+    //append title
     d3.select('#line-graph')
         .append('text')
         .attr('x', 485)
@@ -26,10 +25,12 @@ function lineChart(data) {
         .style('font-weight', 'bolder')
         .style('font-family', 'Montserrat')
 
+    //max value among all the values
     let maxValue = d3.max(data, (d) =>
         Math.max(+d.Solar, +d.Wind, +d['Small Hydro'], +d['Large Hydro'])
     )
 
+    //y Scale and x Scale
     let yScale = d3
         .scaleLinear()
         .domain([-500, maxValue + 500])
@@ -40,6 +41,7 @@ function lineChart(data) {
         .range([0, width - leftMargin - rightMargin])
         .padding(0.2)
 
+    //x-Axis and x-Axis label
     let xAxis = d3.axisBottom(xScale)
 
     d3.select('svg')
@@ -55,7 +57,7 @@ function lineChart(data) {
         .attr('y', '50') // a little bit below xAxis
         .text('Year')
 
-    // //yAxis and yAxis label
+    //y-Axis and y-Axis label
     let yAxis = d3.axisLeft(yScale).ticks(15)
 
     d3.select('svg')
@@ -70,12 +72,14 @@ function lineChart(data) {
         .attr('text-anchor', 'end')
         .text('In MW')
 
+    //tool-tip text
     const tooltip = d3
         .select('body')
         .append('div')
         .attr('class', 'tooltip')
         .style('opacity', 0)
 
+    //line 1
     let line1 = d3
         .line()
         .x((d) => xScale(d.Source))
@@ -95,7 +99,7 @@ function lineChart(data) {
         .attr('stroke-width', 2)
         .attr('transform', `translate(150,${topMargin})`)
 
-    // //append circle
+    //append circle
     d3.select('svg')
         .selectAll('circle')
         .append('g')
@@ -137,6 +141,7 @@ function lineChart(data) {
             tooltip.transition().duration(500).style('opacity', 0)
         )
 
+    //line 2
     let line2 = d3
         .line()
         .x((d) => xScale(d.Source))
@@ -156,7 +161,7 @@ function lineChart(data) {
         .attr('stroke-width', 2)
         .attr('transform', `translate(150,${topMargin})`)
 
-    // //append circle
+    //append circle
     d3.select('svg')
         .selectAll('.circle2')
         .append('g')
@@ -198,6 +203,7 @@ function lineChart(data) {
             tooltip.transition().duration(500).style('opacity', 0)
         )
 
+    //line 3
     let line3 = d3
         .line()
         .x((d) => xScale(d.Source))
@@ -217,7 +223,7 @@ function lineChart(data) {
         .attr('stroke-width', 2)
         .attr('transform', `translate(150,${topMargin})`)
 
-    // //append circle
+    //append circle
     d3.select('svg')
         .selectAll('.circle3')
         .append('g')
@@ -259,14 +265,13 @@ function lineChart(data) {
             tooltip.transition().duration(500).style('opacity', 0)
         )
 
+    //line 4
     let line4 = d3
         .line()
         .x((d) => xScale(d.Source))
         .y((d) => yScale(+d['Large Hydro']))
         .curve(d3.curveCardinal)
-    // .curve()
-    // .curve(d3.curveCardinal)((d) => +d.Solar)
-    // console.log(xScale(data[0].Source))
+
     d3.select('svg')
         .selectAll('.line')
         .append('g')
@@ -280,7 +285,7 @@ function lineChart(data) {
         .attr('stroke-width', 2)
         .attr('transform', `translate(150,${topMargin})`)
 
-    // //append circle
+    //append circle
     d3.select('svg')
         .selectAll('.circle4')
         .append('g')
@@ -322,13 +327,14 @@ function lineChart(data) {
             tooltip.transition().duration(500).style('opacity', 0)
         )
 
+    //legends
     let legends = d3.select('#line-graph')
 
     // create a list of keys
     let keys = ['Solar', 'Wind', 'Large Hydro', 'Small Hydro']
     let colors = ['red', 'blue', 'orange', 'Green']
 
-    // Usually you have a color scale in your chart already
+    //color scale
     let color = d3.scaleOrdinal().domain(keys).range(colors)
 
     // Add one dot in the legend for each name.
@@ -342,7 +348,7 @@ function lineChart(data) {
         .attr('cx', 850)
         .attr('cy', function (d, i) {
             return 100 + i * (size + 5)
-        }) // 100 is where the first dot appears. 25 is the distance between dots
+        })
         .attr('width', size)
         .attr('height', size)
         .style('fill', function (d) {
@@ -350,7 +356,7 @@ function lineChart(data) {
         })
         .attr('border-radius', '50%')
 
-    // Add one dot in the legend for each name.
+    // Add one text in the legend for each name.
     legends
         .selectAll('mylabels')
         .data(keys)
