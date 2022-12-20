@@ -68,7 +68,7 @@ function drawBarChart(myData) {
         const color = d3
             .scaleOrdinal()
             .domain(subgroups)
-            .range(['red', 'blue', 'orange', 'Green'])
+            .range(['red', 'blue', 'green', 'orange'])
 
         //stack the data --> stack per subgroup
         const stackedData = d3.stack().keys(subgroups)(data)
@@ -130,8 +130,8 @@ function drawBarChart(myData) {
         let legends = d3.select('#bar-chart')
 
         //List of keys
-        let keys = ['Solar', 'Wind', 'Large Hydro', 'Small Hydro']
-        let colors = ['red', 'blue', 'orange', 'Green']
+        let keys = ['Solar', 'Wind', 'Small Hydro', 'Large Hydro']
+        let colors = ['red', 'blue', 'green', 'orange']
 
         //Color Scale
         let colorr = d3.scaleOrdinal().domain(keys).range(colors)
